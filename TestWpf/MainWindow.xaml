@@ -1,0 +1,36 @@
+﻿<Window x:Class="TestWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding Name}"></TextBlock>
+            <ListView ItemsSource="{Binding People}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,10,0" Text="{Binding ID}"></TextBlock>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Fly}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ItemsControl ItemsSource="{Binding People}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,10,0" Text="{Binding ID}"></TextBlock>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Command="{Binding AddPerson}" Width="200px" Height="50" >增加人</Button>
+        </StackPanel>
+    </Grid>
+</Window>

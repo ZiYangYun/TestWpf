@@ -1,0 +1,26 @@
+﻿<Window x:Class="TestWpf.StackPanelMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWpf"
+        mc:Ignorable="d"
+        Title="StackPanelMainWindow" Height="190" Width="350">
+    <!--StackPanel可以纵向和横向紧凑排序-->
+    <Grid>
+        <GroupBox Header='请选择没有错别字的成语' BorderBrush="Black" Margin="5">
+            <StackPanel Margin="5">
+                <TextBlock Text="同类元素需要紧凑排序"/>
+                <TextBlock Text="移除其中的元素后能够自动补缺的布局或者动画"/>
+                <TextBlock Text="Oriwntation属性:Horizontal横向 Vertical 纵向"/>
+                <TextBlock Text="HorizontalAlignment决定内部元素水平方向上对齐"/>
+                <TextBlock Text="VerticalAlignment决定内部元素竖值方向上对齐"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="横向"></TextBlock>
+                    <TextBlock Text="横向"></TextBlock>
+                    <TextBlock Text="横向"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -29,18 +29,16 @@ namespace TestWpf
         {
             MainWindowVM mainWindowVM = new MainWindowVM();
             this.DataContext = mainWindowVM;
-            mainWindowVM.Name = "张三";
 
             List<MainPeople> people = new List<MainPeople>
             {
-                new MainPeople { ID = "001", Name = "张三" },
-                new MainPeople { ID = "002", Name = "李四" },
-                new MainPeople { ID = "003", Name = "王五" },
-                new MainPeople { ID = "004", Name = "6" }
+                new MainPeople { ID = "001", Name = "张三" ,Delete = mainWindowVM.Delete},
+                new MainPeople { ID = "002", Name = "李四" ,Delete = mainWindowVM.Delete},
+                new MainPeople { ID = "003", Name = "王五" ,Delete = mainWindowVM.Delete},
+                new MainPeople { ID = "004", Name = "赵六" ,Delete = mainWindowVM.Delete}
             };
-            people.Sort();
-            people = people.OrderBy(p=>p.ID).ToList();
-            mainWindowVM.People =new System.Collections.ObjectModel.ObservableCollection<MainPeople>(people);
+            people = people.OrderBy(p => p.ID).ToList();
+            mainWindowVM.People = new System.Collections.ObjectModel.ObservableCollection<MainPeople>(people);
         }
     }
 }

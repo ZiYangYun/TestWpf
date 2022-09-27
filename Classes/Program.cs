@@ -45,6 +45,7 @@ namespace Classes
             student1.Name = "李四";
             Console.WriteLine($"ID\t{student.ID}\nName\t{student.Name}");
             Console.WriteLine($"ID\t{student1.ID}\nName\t{student1.Name}");
+            student1 = null;
         }
     }
 

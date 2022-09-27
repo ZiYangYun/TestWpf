@@ -8,28 +8,20 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <StackPanel>
-            <TextBlock Text="{Binding Name}"></TextBlock>
-            <ListView ItemsSource="{Binding People}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,10,0" Text="{Binding ID}"></TextBlock>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text="{Binding Fly}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <ItemsControl ItemsSource="{Binding People}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,10,0" Text="{Binding ID}"></TextBlock>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding People}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="0,0,10,0" Text="{Binding ID}"></TextBlock>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                <TextBlock Text="{Binding Fly}"></TextBlock>
+                                <Button Command="{Binding Delete}" CommandParameter="{Binding ID}">删除</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
             <Button Command="{Binding AddPerson}" Width="200px" Height="50" >增加人</Button>
         </StackPanel>
     </Grid>

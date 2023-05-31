@@ -3,8 +3,12 @@ using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TestWpf
@@ -31,39 +35,82 @@ namespace TestWpf
             {
                 return _AddPerson ?? (_AddPerson = new RelayCommand<string>(s =>
                 {
-                    Add(AddResult);
+                    
                 }));
             }
         }
+
+        private string _Image;
+
+        public string Image
+        {
+            get => _Image;
+            set
+            {
+                _Image = value;
+                RaisePropertyChanged("Image");
+            }
+        }
+        private string _wifi;
+
+        public string wifi
+        {
+            get => _wifi;
+            set
+            {
+                _wifi = value;
+                RaisePropertyChanged("wifi");
+            }
+        }
+        private string _wifi1;
+
+        public string wifi1
+        {
+            get => _wifi1;
+            set
+            {
+                _wifi1 = value;
+                RaisePropertyChanged("wifi1");
+            }
+        }
+        private string _wifi2;
+
+        public string wifi2
+        {
+            get => _wifi2;
+            set
+            {
+                _wifi2 = value;
+                RaisePropertyChanged("wifi2");
+            }
+        }
+
+        
+        public MainWindowVM()
+        {
+            
+        }
+
+        
+        public string ImagePath(string image)
+        {
+            try
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", image);
+
+                return path;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public void AddResult(ObservableCollection<MainPeople> result)
         {
             People = result;
         }
-        public void Add(Action<ObservableCollection<MainPeople>> mainpeople)
-        {
-            Task.Run(() =>
-            {
-                if (People == null)
-                {
-                    return;
-                }
-                ObservableCollection<MainPeople> mainPeoples = new ObservableCollection<MainPeople>();
-                for (int i = 0; i < 100; i++)
-                {
-                    mainPeoples.Add(new Superman
-                    {
-                        //ID = IDIndes++.ToString(),
-                        ID = i.ToString(),
-                        Name = "张三",
-                        Fly = "飞",
-                        Delete = Delete
-                    });
-                }
-
-                mainpeople(mainPeoples);
-            });
-        }
-
+        
         private RelayCommand<string> _Delete;
         public RelayCommand<string> Delete
         {
@@ -121,3 +168,22 @@ namespace TestWpf
         }
     }
 }
+
+
+//// 创建Timer实例并设置调用的回调函数和间隔时间 
+//Timer timer = new Timer(new TimerCallback(TimerCallBack), null, 0, 1000);
+// Timer回调函数
+//private void TimerCallBack(object state)
+//{
+//    // 在此处实现每五秒钟刷新一次操作
+//    // ……
+//    //远程服务器IP
+//    IPHostEntry hostEntry = Dns.GetHostEntry("www.example.com");
+//    //构造Ping实例
+//    Ping pingSender = new Ping();
+//    //调用同步 send 方法发送数据,将返回结果保存至PingReply实例
+//    PingReply reply = pingSender.Send(hostEntry.AddressList[0]);
+
+//    wifi = "答复的主机地址：" + reply.Address.ToString();
+//    wifi1 = "延迟：" + reply.RoundtripTime;
+//}
